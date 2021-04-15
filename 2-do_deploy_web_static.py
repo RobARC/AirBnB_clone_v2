@@ -1,18 +1,19 @@
 #!/usr/bin/python3
-'''  a Fabric script (based on the file 1-pack_web_static.py) that distributes an
-     archive to your web servers, using the function do_deploy
+''' a Fabric script (based on the file 1-pack_web_static.py) that distributes
+    an archive to your web servers, using the function do_deploy
 '''
 
 
 import os
 from fabric.api import *
 
+
 env.hosts = ['37.74.177.231, 54.157.63.160']
+
 
 def do_deploy(archive_path):
     """ Deploys an archive to web servers """
 
-    
     if not os.path.exists(archive_path):
         return False
     try:
@@ -26,8 +27,7 @@ def do_deploy(archive_path):
         run('rm /tmp/{}'.format(file_name))
         run('mv {0}{1}/'.format(path, no_ext))
         run('rm -rf /data/web_static/current')
-        run('ln -s {}{}/ /data/web_static/current'.format(path,no_ext))
+        run('ln -s {}{}/ /data/web_static/current'.format(path, no_ext))
         return True
-    except:
+    except Exception:
         return False
-    
