@@ -12,11 +12,11 @@ def do_pack():
 
     now = datetime.now()
     filename = 'versions/web_static_{}{}{}{}{}{}.tgz'.format(now.year,
-                                                            now.month,
-                                                            now.day,
-                                                            now.hour,
-                                                            now.minute,
-                                                            now.second)
+                                                             now.month,
+                                                             now.day,
+                                                             now.hour,
+                                                             now.minute,
+                                                             now.second)
     print("Packing web_static to {}".format(filename))
     local("mkdir -p versions")
     result = local("tar -cvzf {} web_static".format(filename))
