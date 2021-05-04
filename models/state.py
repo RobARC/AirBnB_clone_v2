@@ -19,7 +19,7 @@ class State(BaseModel, Base):
         cities = relationship("City", **kwargs)
     else:
         name = ""
-            
+
         @property
         def cities(self):
             """Return list of Cities with the current state_id."""
